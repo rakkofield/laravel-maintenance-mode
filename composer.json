@@ -1,0 +1,21 @@
+{
+    "name": "rakko-inc/laravel-maintenance-mode",
+    "description": "",
+    "license": "MIT",
+    "authors": [],
+    "require": {
+        "php": "~7.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "RakkoInc\\LaravelMaintenanceMode\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "RakkoInc\\LaravelMaintenanceMode\\": "tests"
+        }
+    },
+    "config": {
+    }
+}
