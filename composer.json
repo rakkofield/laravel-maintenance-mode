@@ -4,7 +4,11 @@
     "license": "MIT",
     "authors": [],
     "require": {
-        "php": "~7.2"
+        "php": "~7.2",
+        "illuminate/contracts": "^6.0",
+        "laravel/framework": "^6.0",
+        "ext-json": "*",
+        "symfony/http-foundation": "^4.3.4"
     },
     "autoload": {
         "psr-4": {
