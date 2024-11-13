@@ -1,0 +1,39 @@
+name: tests
+
+on:
+    push:
+        branches:
+            - '*.x'
+    pull_request:
+
+jobs:
+    linux_tests:
+        runs-on: ubuntu-24.04
+        strategy:
+            fail-fast: true
+            matrix:
+                php: [7.2]
+                stability: [prefer-lowest, prefer-stable]
+        name: PHP ${{ matrix.php }} - ${{ matrix.stability }}
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Setup PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: ${{ matrix.php }}
+                  extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, gd, igbinary, msgpack, lzf, zstd, lz4, gmp, :php-psr
+                  ini-values: error_reporting=E_ALL
+                  tools: composer:v2
+                  coverage: none
+
+            - name: Install dependencies
+              uses: nick-fields/retry@v3
+              with:
+                  timeout_minutes: 5
+                  max_attempts: 5
+                  command: composer update --${{ matrix.stability }} --prefer-dist --no-interaction --no-progress
+
+            - name: Execute tests
+              run: vendor/bin/phpunit
