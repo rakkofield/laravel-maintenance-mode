@@ -4,7 +4,10 @@ This package provides the advanced maintenance mode features introduced in Larav
 
 ## Demo
 
-### Start dev server.
+This demo provides basic instructions for starting and managing the server.
+For more detailed command options and configuration settings, please refer to [the Laravel official documentation](https://laravel.com/docs/11.x/configuration#maintenance-mode).
+
+### Start dev server
 
 ```sh
 cd demo
