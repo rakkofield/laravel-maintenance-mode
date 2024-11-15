@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6ce0ebcff63145bda6187921396e1c80",
+    "content-hash": "071901fba4b5be7d2733f064c245e128",
     "packages": [
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -1628,22 +1628,22 @@
         },
         {
             "name": "rakko-inc/laravel-maintenance-mode",
-            "version": "dev-main",
+            "version": "1.x-dev",
             "dist": {
                 "type": "path",
                 "url": "..",
-                "reference": "7464b99dba81f63b8bb67fe20347a0f74729926b"
+                "reference": "eed8d4c2f59d9b8c5236a638bf67b9f481a9f50c"
             },
             "require": {
                 "ext-json": "*",
                 "illuminate/contracts": "^6.0",
                 "laravel/framework": "^6.0",
-                "php": "~7.2",
+                "php": "^7.2.5 || ~8.0",
                 "symfony/http-foundation": "^4.3.4"
             },
             "require-dev": {
                 "orchestra/testbench": "^4.18",
-                "phpunit/phpunit": "^8.5"
+                "phpunit/phpunit": "^8.5 || ^9.6"
             },
             "type": "library",
             "autoload": {
