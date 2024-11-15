@@ -2,8 +2,8 @@
 
 namespace RakkoInc\LaravelMaintenanceMode\Foundation\Providers;
 
-use RakkoInc\LaravelMaintenanceMode\Contracts\Foundation\MaintenanceMode;
-use RakkoInc\LaravelMaintenanceMode\Foundation\FileBasedMaintenanceMode;
+use RakkoInc\LaravelMaintenanceMode\Contracts\Foundation\MaintenanceMode as MaintenanceModeContract;
+use RakkoInc\LaravelMaintenanceMode\Foundation\MaintenanceModeManager;
 
 class FoundationServiceProvider extends \Illuminate\Foundation\Providers\FoundationServiceProvider
 {
@@ -21,6 +21,13 @@ class FoundationServiceProvider extends \Illuminate\Foundation\Providers\Foundat
      */
     public function registerMaintenanceModeManager()
     {
-        $this->app->bind(MaintenanceMode::class, FileBasedMaintenanceMode::class);
+        $this->app->singleton(MaintenanceModeManager::class);
+
+        $this->app->bind(
+            MaintenanceModeContract::class,
+            function () {
+                return $this->app->make(MaintenanceModeManager::class)->driver();
+            }
+        );
     }
 }
