@@ -13,12 +13,13 @@ jobs:
             fail-fast: true
             matrix:
                 php: [7.2, 7.3, 7.4, 8.0]
+                laravel: [6.0, 7.0]
                 phpunit: [8.5, 9.6]
                 stability: [prefer-lowest, prefer-stable]
                 exclude:
                     - php: 7.2
                       phpunit: 9.6
-        name: PHP ${{ matrix.php }} - PHPUnit ${{ matrix.phpunit }} - ${{ matrix.stability }}
+        name: PHP ${{ matrix.php }} - Laravel ${{ matrix.laravel }} - PHPUnit ${{ matrix.phpunit }} - ${{ matrix.stability }}
         steps:
             - name: Checkout code
               uses: actions/checkout@v4
@@ -40,8 +41,15 @@ jobs:
               uses: actions/cache@v4
               with:
                   path: ${{ steps.composer-cache.outputs.dir }}
-                  key: ${{ runner.os }}-${{ matrix.php }}-${{ matrix.phpunit }}-${{ matrix.stability }}-composer-${{ hashFiles('**/composer.lock') }}
-                  restore-keys: ${{ runner.os }}-${{ matrix.php }}-${{ matrix.phpunit }}-${{ matrix.stability }}-composer-
+                  key: ${{ runner.os }}-${{ matrix.php }}-${{ matrix.laravel }}-${{ matrix.phpunit }}-${{ matrix.stability }}-composer-${{ hashFiles('**/composer.lock') }}
+                  restore-keys: ${{ runner.os }}-${{ matrix.php }}-${{ matrix.laravel }}-${{ matrix.phpunit }}-${{ matrix.stability }}-composer-
+
+            - name: Set Laravel
+              uses: nick-fields/retry@v3
+              with:
+                  timeout_minutes: 5
+                  max_attempts: 5
+                  command: composer require laravel/framework:^${{ matrix.laravel }} --no-interaction --no-update
 
             - name: Set PHPUnit
               uses: nick-fields/retry@v3

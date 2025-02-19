@@ -1632,17 +1632,17 @@
             "dist": {
                 "type": "path",
                 "url": "..",
-                "reference": "eed8d4c2f59d9b8c5236a638bf67b9f481a9f50c"
+                "reference": "fed68d66867030d4c5b4e6959cc674ed0d7c0d38"
             },
             "require": {
                 "ext-json": "*",
-                "illuminate/contracts": "^6.0",
-                "laravel/framework": "^6.0",
+                "illuminate/contracts": "^6.0 || ^7.0",
+                "laravel/framework": "^6.0 || ^7.0",
                 "php": "^7.2.5 || ~8.0",
-                "symfony/http-foundation": "^4.3.4"
+                "symfony/http-foundation": "^4.3.4 || ^5.0"
             },
             "require-dev": {
-                "orchestra/testbench": "^4.18",
+                "orchestra/testbench": "^4.18 || ^5.13",
                 "phpunit/phpunit": "^8.5 || ^9.6"
             },
             "type": "library",
