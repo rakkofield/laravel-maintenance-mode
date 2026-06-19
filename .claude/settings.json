@@ -1,0 +1,6 @@
+{
+  "env": {
+    "CLAUDE_CODE_ENABLE_TELEMETRY": "1",
+    "OTEL_RESOURCE_ATTRIBUTES": "project.name=laravel-maintenance-mode"
+  }
+}
